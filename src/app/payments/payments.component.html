@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row text-center align-middle bordered">
+        <div class="col text-center">
+          <span class="d-inline-block text-center" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
+            <h5><img src="https://cdn6.aptoide.com/imgs/4/a/d/4ad9f1c01f69f8739d302b43dfde3c49_icon.png" height="10" width="10"> LIVE</h5>
+            <button class="btn btn-light  text-center rounded border-secondary" style="pointer-events: none;" type="button" disabled>YOUR CODE: {{code}}</button>
+          </span>
+        </div>
+      </div>
+      <div class="row d-flex align-items-end text-left align-bottom mt-5">
+        <div class="col align-items-end">
+          <!-- (keyup)="onKey($event)" -->
+          <form>
+            <label style="font-size: 15px; color:cadetblue">PAYMENT</label><br/>
+            <input name="name" [(ngModel)]="name" class="rounded" placeholder="payment">
+          </form>
+        </div>
+        <div class="col d-flex align-items-start">
+          <form>
+            <label style="font-size: 15px; color:cadetblue">AMMOUNT</label><br/>
+            <input name="ammount"  [(ngModel)]="ammount" type="number" class="rounded" placeholder="ammount" >
+          </form>
+        </div>
+        <div class="col d-flex align-items-end align-bottom">
+          <button type="button" style="background-color:#668B8B; color: aliceblue;" class="btn btn-secondary" (click)="addPaymentRow()">+ ADD</button>
+        </div>
+        <div class="col d-flex align-items-end align-bottom">
+          <p> </p>
+        </div>
+        <div class="col d-flex align-items-end align-bottom">
+          <p> </p>
+        </div>
+        <div class="col d-flex align-items-end align-bottom">
+          <p> </p>
+        </div>
+      </div>
+
+    <div class="row text-center align-bottom mt-5">
+      <h5>PAYMENT LIST</h5>
+      <table class="table table-striped mt-1 table-bordered text-center">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">NAME</th>
+            <th scope="col">AMMOUNT</th>
+            <th scope="col">CODE</th>
+            <th scope="col">GRID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of paymentListRow">
+            <td >{{row.name}}</td>
+            <td >{{row.ammount}}</td>
+            <td >{{row.code}}</td>
+            <td >{{row.grid}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col text-right">
+      <a style="background-color:cadetblue; color: aliceblue;" class="btn btn-light  text-center rounded border-secondary btn-sm" routerLink="/generator" type="button" >Go to Generator</a>
+  </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

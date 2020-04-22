@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row d-flex text-center align-items-center align-bottom">
+        <div class="col align-items-start">
+
+            <p style="font-size: 15px; color:cadetblue" class= "h6 align-items-start">CHARACTER</p>
+            <input name="character" class="rounded" pattern="[a-zA-Z]" maxlength="1" (keyup)="onKey($event)" [(ngModel)]="character" pattern="[a-z\s]+$" [disabled]="isDisable">
+            <p class="label label-danger" style="font-size: 12px; color: red;" *ngIf="!isAlpha">Números não são aceitos</p>
+
+        </div>
+        <div class="col">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThQKyMCxsrg1_mig2QWjR1vtVC6hTDrdJMcVShcJIxT_OWKtAx&usqp=CAU" height="50" width="50">
+        </div>
+        <div class="col">
+          <button type="button" class="btn btn-secondary" (click)="generateGrid()">GENERATE 2D GRID</button>
+        </div>
+      </div>
+
+      <table class="table table-striped mt-5 table-bordered text-center">
+        <tbody>
+          <tr *ngFor="let row of array">
+            <td *ngFor="let column of row">{{column}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row text-center align-middle ">
+        <div class="col text-center">
+          <span class="d-inline-block text-center" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
+            <h5><img src="https://cdn6.aptoide.com/imgs/4/a/d/4ad9f1c01f69f8739d302b43dfde3c49_icon.png" height="10" width="10"> LIVE</h5>
+            <button class="btn btn-light  text-center rounded border-secondary" style="pointer-events: none;" type="button" disabled>YOUR CODE: {{code}}</button>
+          </span>
+        </div>
+      </div>
+      <div class="row text-right align-middle mt-3 ">
+        <div class="col text-right">
+            <a style="background-color:cadetblue; color: aliceblue;" class="btn btn-light  text-center rounded border-secondary btn-sm" routerLink="/payments" type="button" >Go to Payments</a>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
