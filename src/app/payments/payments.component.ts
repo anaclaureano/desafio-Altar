@@ -13,6 +13,7 @@ export class PaymentsComponent implements OnInit {
   public code$: Observable<Object>;
   public paymentListRow: any[] = [];
   public paymentListTemp: any;
+  isEmpty:boolean= false;
 
   name:string;
   ammount:string;
@@ -22,13 +23,11 @@ export class PaymentsComponent implements OnInit {
 
   constructor(private dataservice: DataseviceService) { }
 
-
   ngOnInit(): void {
     
       this.code$ = this.dataservice.getCodeObservable();
       this.code$.subscribe((code:string)=>{
         this.code = code;
-        console.log("new code received on payments:",code);
       });
     
     this.paymentListRow = this.dataservice.getPayment();
@@ -36,9 +35,10 @@ export class PaymentsComponent implements OnInit {
 
   addPaymentRow(){
     if(this.ammount==''||this.name==''||this.ammount==undefined||this.ammount==undefined||this.code==undefined){
-      alert("Todos os campos devem ser preenchidos");
+      this.isEmpty=true;
     }
     else{
+      this.isEmpty=false;
       this.paymentListTemp = {
       name: this.name,
       ammount:this.ammount,

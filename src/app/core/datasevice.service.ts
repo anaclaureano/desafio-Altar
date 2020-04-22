@@ -7,7 +7,6 @@ import { Observable, Subject } from 'rxjs';
 export class DataseviceService {
 
   constructor() {
-
   }
 
   public codeObs = new Subject<string>();
@@ -16,16 +15,12 @@ export class DataseviceService {
   public secondNum:number;
   public code: string;
   public array= [];
-  public alphabeth= 'abcdefghijklmnoprstuvxz';
-  public lastSeconds = 0;
-  public secs$: Observable<Object>;
+  public alphabeth= 'abcdefghijklmnopqrstuvwxyz';
 
   public character: string;
-  public cont$: Observable<Object>;
   public grid$=new Subject();
   public paymentListRow: any[] = [];
   trigger:boolean=false;
-
 
 
   generateArrayGrid(){
@@ -34,12 +29,11 @@ export class DataseviceService {
       let indexCharacter = this.alphabeth.indexOf(this.character) +1;
       let contPercentage = 0;
       let z = 0;
-      //console.log(this.alphabeth.indexOf(this.character));
       let randomArray =[];
+
       for(let i=0; i<100; i++){
-        randomArray.push(Math.floor((Math.random() * 23) + 1));
+        randomArray.push(Math.floor((Math.random() * this.alphabeth.length) + 1));
       }
-      //console.log(randomArray);
       randomArray.forEach(element=>{
         if(element==indexCharacter){
           contPercentage =contPercentage +1;
@@ -55,8 +49,6 @@ export class DataseviceService {
           }
           
         }while(contPercentage<=20)
-
-
       }
       for (let i=0;i<10 ;i++){
         this.array[i]=[];
@@ -71,7 +63,7 @@ export class DataseviceService {
       for (let i=0;i<10 ;i++){
       this.array[i]=[];
       for(let j=0; j<10 ; j++){
-        const x = Math.floor((Math.random() * 23) + 1);
+        const x = Math.floor((Math.random() * this.alphabeth.length) + 1);
         this.array[i][j]= this.alphabeth.slice((x-1),x);
       }
     }
@@ -83,12 +75,12 @@ export class DataseviceService {
   getGridObservable(){
     return this.grid$.asObservable();
   }
+
   startGrid(){
       setInterval(()=>{
         let second = new Date().getSeconds();
         this.generateArrayGrid();
         this.getCode(second);
-        console.log("new value ", this.code);
         this.codeObs.next(this.code);
         
       },2000)
@@ -112,13 +104,6 @@ export class DataseviceService {
       a = parseInt(secondString.slice(0,1)) ;
       b = parseInt(secondString.slice(1,2));
     }
-
-    //console.log(a);
-    //console.log(b);
-
-    //console.log(this.array[a][b]);
-    //console.log(this.array[b][a]);
-
     let codeLetter1 = this.array[a][b];
     let codeLetter2 = this.array[b][a];
 
@@ -162,21 +147,15 @@ export class DataseviceService {
       this.secondNum=secondNumTemp;
     }
 
-    //console.log(this.firstNum);
-    //console.log(this.secondNum);
-
     this.code=this.firstNum+''+this.secondNum;
-
   }
+
   createPayment(rowPayment: object){
     this.paymentListRow.push(rowPayment);
   }
+
   getPayment(){
     return this.paymentListRow;
   }
-
-
-
-
 
 }

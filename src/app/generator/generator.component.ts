@@ -13,8 +13,6 @@ export class GeneratorComponent implements OnInit {
   public isAlpha: boolean =true;
 
   public array= [];
-  public alphabeth= 'abcdefghijklmnoprstuvxz';
-  public lastSeconds = 0;
   public code$: Observable<Object>;
   public grid$: Observable<Object>;
   public character= undefined;
@@ -22,8 +20,7 @@ export class GeneratorComponent implements OnInit {
   public isDisable: boolean=false;
 
   constructor(private dataservice: DataseviceService) { }
-  public datinha = this.dataservice.date;
-
+  
 
   ngOnInit(): void {
 
@@ -31,8 +28,6 @@ export class GeneratorComponent implements OnInit {
     this.grid$.subscribe((grid:any[]) => {
       this.array = grid;
     });
-
-
       this.code$ = this.dataservice.getCodeObservable();
       this.code$.subscribe((code:string)=>{
         this.code = code;
@@ -43,7 +38,6 @@ export class GeneratorComponent implements OnInit {
   onKey(event:any) {
 
     this.isAlpha = this.PATTERN.test(this.character);
-    //console.log(this.isAlpha);
 
     if(this.isAlpha==false){
       this.cleanInput();
@@ -58,7 +52,7 @@ export class GeneratorComponent implements OnInit {
       this.isDisable=true;
       this.cleanInput();
     },8000);
- }
+  }
 
   generateGrid(){
     this.dataservice.trigger=true;
@@ -70,12 +64,6 @@ export class GeneratorComponent implements OnInit {
       this.character=undefined;
       this.dataservice.character=undefined;
   }
-
-  isDisabled(){
-    this.isDisable=true;
-  }
-
-
 
 
 }
