@@ -31,7 +31,6 @@ export class GeneratorComponent implements OnInit {
       this.code$ = this.dataservice.getCodeObservable();
       this.code$.subscribe((code:string)=>{
         this.code = code;
-        console.log(code);
       });
 
   }
